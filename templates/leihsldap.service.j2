@@ -1,8 +1,11 @@
 [Unit]
 Description=Leihs LDAP Authenticator
 Documentation=https://github.com/elan-ev/leihs-ldap-authenticator
-Wants=network.target
+
 Requires=leihs-admin.service
+After=leihs-admin.service
+PartOf=leihs-admin.service
+
 StartLimitIntervalSec=500
 StartLimitBurst=20
 
@@ -15,3 +18,4 @@ RestartSec=10s
 
 [Install]
 WantedBy=multi-user.target
+WantedBy=leihs-admin.service
